@@ -21,7 +21,9 @@ public class Empleado implements Runnable{
 			double importe=5+Math.random()*95;//para que el minimo sea 5 le sumamos 5 a un random que nos genera el numero hasta 95
 			cajaCompartida.cobrar(importe);
 			//totalCobrado+=importe;
+			synchronized(cajaCompartida) {
 			System.out.printf("Empleado %s cobró %.2f €. Total en caja: %.2f €%n", this.nombre,importe,this.cajaCompartida.getTotal());
+			}
 		}
 		
 		
