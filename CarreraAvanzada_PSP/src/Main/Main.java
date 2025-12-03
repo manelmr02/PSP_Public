@@ -1,9 +1,11 @@
 package Main;
 
+import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 
 import Clases.Clima;
 import Clases.Liebre;
+import Clases.Mono;
 import Clases.Pajaro;
 import Clases.Tortuga;
 
@@ -27,26 +29,51 @@ public class Main {
     private final static int SALIDA_TUNEL=150;
 	
 	public static void main(String[] args){
-
+/*
         Semaphore tunel = new Semaphore(1);
         Clima clima = new Clima();
         Tortuga tortuga = new Tortuga(tunel, clima);
         Liebre liebre = new Liebre(tunel, clima);
         Pajaro pajaro = new Pajaro(tunel, clima);
+        */
+        Semaphore liana1=new Semaphore(1);
+        Semaphore liana2=new Semaphore(1);
+        Semaphore liana3=new Semaphore(1);
+        Semaphore liana4=new Semaphore(1);
+        Semaphore liana5=new Semaphore(1);
+        ArrayList<Semaphore> lianas=new ArrayList<Semaphore>();
+        lianas.add(liana1);
+        lianas.add(liana2);
+        lianas.add(liana3);
+        lianas.add(liana4);
+        lianas.add(liana5);
+        Mono m1=new Mono(5,"Mono",lianas);
+        Mono m2=new Mono(5,"Orangutan",lianas);
+        Mono m3=new Mono(5,"Mono veloz",lianas);
         
         System.out.println("¡Comienza la carrera de "+DISTANCIA_CARRERA+" metros!");
         System.out.println("Túnel del metro: "+ENTRADA_TUNEL+ " al "+SALIDA_TUNEL+"m");
         System.out.println("Charcos cada 10 metros");
-        
+        System.out.println("Lianas cada 100 metros (desde el metro 0)");
+        /*
         clima.start();
         tortuga.start();
         liebre.start();
         pajaro.start();
+        */
+        m1.start();
+        m2.start();
+        m3.start();
         try {
+        	/*
             tortuga.join();
             liebre.join();
             pajaro.join();
             clima.detenerClima();
+            */
+            m1.join();
+            m2.join();
+            m3.join();
         }catch(InterruptedException e){
             e.printStackTrace();
         }

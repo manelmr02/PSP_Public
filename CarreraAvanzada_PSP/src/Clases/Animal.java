@@ -15,6 +15,12 @@ public class Animal extends Thread{
     protected final int DISTANCIA=500;
     protected final int ENTRADA_TUNEL=50;
     protected final int SALIDA_TUNEL=150;
+    
+    public Animal(int velocidad,String nombre){
+		this.velocidad=velocidad;
+        this.posicion=0;
+        this.nombre=nombre;
+	}
 
 	public Animal(int velocidad,String nombre,Semaphore tunel,Clima clima){
 		this.velocidad=velocidad;
